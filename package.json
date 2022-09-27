@@ -1,0 +1,21 @@
+{
+  "name": "sorter",
+  "version": "1.0.0",
+  "description": "clasificador de archivos",
+  "main": "app,js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "clasificador",
+    "archivos"
+  ],
+  "author": "Andrés Petronio",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^9.1.2",
+    "uuid": "^9.0.0"
+  }
+}
