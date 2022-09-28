@@ -32,11 +32,6 @@ class Core {
         let path = `${dir}${numExpte}`;
         return path;
       }
-      // if (!fs.existsSync(numExpte)) {
-      //   fs.mkdirSync(numExpte);
-      //   fs.mkdirSync(`${numExpte}/Procesal`);
-      // }
-
     }
   }
 
@@ -63,26 +58,11 @@ class Core {
               }
             });
           }
-
         }
-        //   if (action === '-c') {
-        //     fs.copyFileSync(currentFile, newFile);
-        //   } else {
-        //     fs.rename(currentFile, newFile, (err) => {
-        //       if (err) {
-        //         throw err
-        //       }
-        //     });
-        //   }
       }
     }
 
     return true;
-    // if (action === '-c') {
-    //   console.log(`********** Proceso finalizado. Los archivos fueron copiados **********`)
-    // } else {
-    //   console.log(`********** Proceso finalizado. Los archivos fueron movidos **********`)
-    // }
   }
 
 }

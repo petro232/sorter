@@ -34,8 +34,7 @@ const mainQueries = [
       {
         value: '6',
         name: `${'6.'.green} Salir`
-      },
-      // new inquirer.Separator(),
+      }
     ]
   }
 ]

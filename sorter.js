@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import {
   mainMenu,
   pause,
@@ -12,18 +10,10 @@ import {
 import Paths from './models/paths.js';
 import Core from './helpers/core.js'
 
-// import { savePath, readDB } from './helpers/crud.js'
-
-
 const main = async () => {
   let opt = '';
   const paths = new Paths();
   const core = new Core();
-  // const pathsDB = readDB();
-  // if (pathsDB) {
-  //   const allPaths = paths.loadPaths(pathsDB);
-  //   console.log(allPaths);
-  // }
 
   do {
     opt = await mainMenu();
@@ -65,8 +55,6 @@ const main = async () => {
         }
         break;
     }
-
-    // savePath(paths._list);
 
     await pause();
 
