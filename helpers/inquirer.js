@@ -11,29 +11,24 @@ const mainQueries = [
     choices: [
       {
         value: '1',
-        name: `${'1.'.green} Distribuir documentos`
+        name: `${'1.'.green} Ver Directorios agregados`,
       },
-      new inquirer.Separator(),
       {
         value: '2',
-        name: `${'2.'.green} Ver paths agregados`,
+        name: `${'2.'.green} Agregar/Cambiar Directorios de origen`,
       },
       {
         value: '3',
-        name: `${'3.'.green} Agregar/Cambiar path de origen`,
+        name: `${'3.'.green} Agregar Directorios de destino`
       },
       {
         value: '4',
-        name: `${'4.'.green} Agregar paths de destino`
-      },
-      {
-        value: '5',
-        name: `${'5.'.green} Borrar paths`
+        name: `${'4.'.green} Borrar Directorios`
       },
       new inquirer.Separator(),
       {
-        value: '6',
-        name: `${'6.'.green} Salir`
+        value: '5',
+        name: `${'5.'.green} Salir`
       }
     ]
   }
@@ -42,7 +37,7 @@ const mainQueries = [
 
 const mainMenu = async () => {
   console.clear();
-  console.log(':::::::::::::::: SORTER :::::::::::::::::'.green);
+  console.log(':::::::::::::::::::::::::::::::::::::::::'.green);
   console.log('   Distribuidor automático de archivos   '.white);
   console.log(':::::::::::::::::::::::::::::::::::::::::\n'.green);
 
@@ -69,7 +64,7 @@ const userInput = async (message) => {
       message,
       validate(value) {
         if (value.length === 0) {
-          return 'Ingrese un path'.red
+          return 'Ingrese un Directorio'.red
         }
         return true;
       }
@@ -83,7 +78,7 @@ const pathsListToDelete = async () => {
   const paths = readDB();
   const choices = paths.map((path, i) => {
     const idx = `${i + 1}.`.green;
-    let isSource = (path.type === 'source') ? 'path de Origen'.yellow.italic : 'path de Destino'.magenta.italic;
+    let isSource = (path.type === 'source') ? 'Directorio de Origen'.yellow.italic : 'Directorio de Destino'.magenta.italic;
     return {
       value: path.id,
       name: `${idx} ${path.dir} :: ${isSource}`
@@ -93,7 +88,7 @@ const pathsListToDelete = async () => {
     {
       type: 'list',
       name: 'id',
-      message: 'Borrar path',
+      message: 'Borrar directorio',
       choices
     }
   ]
@@ -101,18 +96,18 @@ const pathsListToDelete = async () => {
   return id;
 }
 
-const sortMethod = async () => {
-  const options = [
-    {
-      type: 'list',
-      name: 'method',
-      message: 'Seleccione una opción para distribuir los documentos'.green,
-      choices: ['Copiar documentos', 'Mover documentos']
-    }
-  ]
-  const { method } = await inquirer.prompt(options);
-  return method;
-}
+// const sortMethod = async () => {
+//   const options = [
+//     {
+//       type: 'list',
+//       name: 'method',
+//       message: 'Seleccione una opción para distribuir los documentos'.green,
+//       choices: ['Copiar documentos', 'Mover documentos']
+//     }
+//   ]
+//   const { method } = await inquirer.prompt(options);
+//   return method;
+// }
 
 const confirm = async (message) => {
   const question = [
@@ -132,5 +127,5 @@ export {
   userInput,
   pathsListToDelete,
   confirm,
-  sortMethod
+  // sortMethod
 }

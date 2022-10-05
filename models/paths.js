@@ -10,7 +10,7 @@ class Paths {
     allPaths.forEach((path, index) => {
       const idx = `${index + 1}.`.green;
       const { dir, type } = path;
-      let isSource = (type === 'source') ? 'path de Origen'.yellow.italic : 'path de Destino'.magenta.italic;
+      let isSource = (type === 'source') ? 'Dirctorio de Origen'.yellow.italic : 'Directorio de Destino'.magenta.italic;
 
       console.log(`${idx} ${dir} :: ${isSource}`);
     })

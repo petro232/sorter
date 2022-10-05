@@ -49,7 +49,7 @@ class Core {
         const newPath = await this.checkDir(`${numExpte}`);
         if (newPath) {
           const newFilePath = `${newPath}/${file}`;
-          if (method === 'Copiar documentos') {
+          if (method === '-c') {
             fs.copyFileSync(currentFilePath, newFilePath);
           } else {
             fs.rename(currentFilePath, newFilePath, (err) => {

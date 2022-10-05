@@ -1,17 +1,17 @@
-import express from 'express';
-const app = express();
-const port = 3000;
+import Core from './helpers/core.js';
+import colors from 'Colors'
 
-app.use('/', express.static('public'));
-app.get('/', (req, res) => { })
-// app.post('/', (req, res) => { console.log('post to index') })
+const main = async () => {
+  const core = new Core();
+  const method = process.argv[2] || '-m';
 
+  if (method !== '-c' && method !== '-m') {
+    console.log('No se admiten comandos distintos a "-c" o "-m"'.red);
+  } else {
+    await core.sort(method);
+    console.log('Distribución de documento finalizada'.green);
 
+  }
+}
 
-
-
-
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+main();
