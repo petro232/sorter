@@ -1,5 +1,5 @@
 import Core from './helpers/core.js';
-import colors from 'Colors'
+import colors from 'Colors';
 
 const main = async () => {
   const core = new Core();
