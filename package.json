@@ -2,8 +2,7 @@
   "name": "sorter",
   "version": "2.0.0",
   "description": "clasificador de archivos",
-  "main": "./sorter.js",
-  "type": "module",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
