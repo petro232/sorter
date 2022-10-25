@@ -1,5 +1,4 @@
 import fs from "fs";
-
 const db = './db/data.json';
 const dbData = JSON.parse(fs.readFileSync(db));
 

@@ -1,5 +1,4 @@
 import fs from 'fs';
-
 import { readDB } from './crud.js';
 const paths = readDB();
 
@@ -35,7 +34,7 @@ class Core {
     }
   }
 
-  sort = async (method) => {
+  allocateFiles = async (method) => {
     const sourcePathDir = await this.getSourcePathDir();
     const files = await fs.promises.readdir(sourcePathDir);
 
@@ -49,7 +48,7 @@ class Core {
         const newPath = await this.checkDir(`${numExpte}`);
         if (newPath) {
           const newFilePath = `${newPath}/${file}`;
-          if (method === '-c') {
+          if (method === 'copy') {
             fs.copyFileSync(currentFilePath, newFilePath);
           } else {
             fs.rename(currentFilePath, newFilePath, (err) => {

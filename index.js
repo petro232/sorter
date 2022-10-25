@@ -1,38 +1,49 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
 const app = express();
+import Core from './helpers/core.js'
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/public')); // necesario para que funciones el templating desde cualquien directorio. Tipo "path absoluto "
+const { pathname: root } = new URL('./public', import.meta.url)
+app.set('views', root); // necesario para que funciones el templating desde cualquien directorio. Tipo "path absoluto "
+
+
+
 
 app.get('/', (req, res) => {
-  res.render('home')
+  if (req.query) {
+    let { method } = req.query;
+    const core = new Core();
+    try {
+      core.allocateFiles(method);
+      res.render('home', { wereAllocated: true })
+    } catch (error) {
+      res.render('home', { wereAllocated: false })
+    }
+  } else {
+    res.render('home', { wereAllocated: false })
+  }
 })
 
 app.get('/config', (req, res) => {
   res.render('config')
 })
 
+app.get('/allocate', (req, res) => {
+  let { method } = req.query;
+  const core = new Core();
+  try {
+    core.allocateFiles(method);
+    res.render('home', { wereAllocated: true })
+  } catch (error) {
+    res.render('home', { wereAllocated: false })
+  }
+})
 
+app.get('*', (req, res) => {
+  res.render('home')
+})
 
-
-// app.get('/cats', (req, res) => {
-//   const cats = ['Blue', 'Rocket', 'Monty', 'Stephanie', 'Winston'];
-//   res.render('cats', { cats })
-// })
-// app.get('/rand', (req, res) => {
-//   const num = Math.floor(Math.random() * 10) + 1;
-//   res.render('random', { num })
-// })
-// app.get('/r/:subreddit', (req, res) => {
-//   const { subreddit } = req.params;
-//   const data = redditData[subreddit];
-//   if (data) {
-//     res.render('subreddit', { ...data })
-//   } else {
-//     res.render('notfound', { subreddit })
-//   }
-// })
 
 app.listen(3000, () => {
   console.log('listening on port 3000')
